@@ -4,9 +4,9 @@ import {
 } from "react-native";
 
 function QuestionListItem (props) {
-  const { title, body } = props;
+  const { title, body, onPress = () => {} } = props;
   return (
-    <View
+    <TouchableOpacity
       style={{
         paddingTop: 10,
         paddingBottom: 10,
@@ -15,6 +15,7 @@ function QuestionListItem (props) {
         borderTopWidth: 2,
         borderTopColor: 'deepskyblue',
       }}
+      onPress={() => onPress({id: props.id, title: title})}
     >
       <Text
         style={{
@@ -27,7 +28,7 @@ function QuestionListItem (props) {
       <Text numberOfLines={3}>
         {body}
       </Text>
-    </View>
+    </TouchableOpacity>
   )
 }
 

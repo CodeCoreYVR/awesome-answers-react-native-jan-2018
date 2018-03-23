@@ -4,6 +4,10 @@ import { QuestionListItem } from "./";
 import { Question } from "../lib/requests";
 
 class QuestionIndexScreen extends Component {
+  static navigationOptions = {
+    title: "Questions"
+  }
+
   constructor(props) {
     super(props);
 
@@ -50,11 +54,22 @@ class QuestionIndexScreen extends Component {
         keyExtractor={item => item.id}
         renderItem={
           ({item}) =>
-          <QuestionListItem {...item} />
+          <QuestionListItem
+            {...item}
+            onPress={
+              params =>  this.props
+                .navigation
+                .navigate("QuestionShow", params)
+            }
+          />
         }
       />
     )
   }
 }
+
+// QuestionIndexScreen.navigationOptions = {
+//   title: "Questions"
+// }
 
 export { QuestionIndexScreen };
